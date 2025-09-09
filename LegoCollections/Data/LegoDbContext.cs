@@ -6,8 +6,7 @@ namespace LegoCollections.Data;
 public class LegoDbContext : DbContext
 {
     public LegoDbContext(DbContextOptions<LegoDbContext> options) : base(options) {}
- 
-    public DbSet<LegoList> LegoLists { get; set; }
+     public DbSet<LegoList> LegoLists { get; set; }
     public DbSet<LegoFigure> LegoFigures { get; set; }
  
     protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using LegoCollections.Data;
 
-namespace LegoCollections.LegoLists.Queries
+namespace LegoCollections.Queries.LegoLists
 {
     public class LegoListQuery
     {

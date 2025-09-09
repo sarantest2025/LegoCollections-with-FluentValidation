@@ -1,6 +1,4 @@
-
 namespace LegoCollections.Models;
-
 public class LegoList
 {
     public int Id { get; set; }

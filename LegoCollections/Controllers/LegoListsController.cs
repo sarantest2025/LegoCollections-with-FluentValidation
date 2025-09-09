@@ -1,7 +1,7 @@
-using LegoCollections.LegoLists.Commands;
+using LegoCollections.Commands.LegoLists;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using static LegoCollections.LegoLists.Queries.LegoListQuery;
+using static LegoCollections.Queries.LegoLists.LegoListQuery;
 
 namespace LegoCollections.Controllers;
 
@@ -20,11 +20,13 @@ public class LegoListsController : ControllerBase
         return Ok(result);
     }
 
-    [HttpPost]
+    [HttpPost("Register")]
     public async Task<IActionResult> Create([FromBody] CreateLegoListCommand command)
     {
-        var id = await _mediator.Send(command);
-        return CreatedAtAction(nameof(GetAll), new { id }, null);
+        var result = await _mediator.Send(command);
+        if (result <= 0) return BadRequest("Failed to create Lego List");
+        return Ok("Lego List Created Successfully");         
+        //return CreatedAtAction(nameof(GetAll), new { id = result }, null);
     }
 
     [HttpPut("{id}")]

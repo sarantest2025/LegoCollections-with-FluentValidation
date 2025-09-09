@@ -168,3 +168,4 @@ C:\Users\SaranyaKumar\source\repos\LegoCollections\LegoCollections\bin\Debug\net
 C:\Users\SaranyaKumar\source\repos\LegoCollections\LegoCollections\bin\Debug\net9.0\LegoCollections.runtimeconfig.json
 C:\Users\SaranyaKumar\source\repos\LegoCollections\LegoCollections\obj\Debug\net9.0\LegoCollections.genruntimeconfig.cache
 C:\Users\SaranyaKumar\source\repos\LegoCollections\LegoCollections\obj\Debug\net9.0\ref\LegoCollections.dll
+C:\Users\SaranyaKumar\source\repos\LegoCollections\LegoCollections\obj\Debug\net9.0\LegoCollections.sourcelink.json

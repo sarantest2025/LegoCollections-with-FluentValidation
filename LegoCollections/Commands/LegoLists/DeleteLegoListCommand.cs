@@ -4,8 +4,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace LegoCollections.LegoLists.Commands
-{
+namespace LegoCollections.Commands.LegoLists;
     public record DeleteLegoListCommand (int Id) : IRequest;
     
     public class DeleteLegoListHandler : IRequestHandler<DeleteLegoListCommand>
@@ -26,4 +25,3 @@ namespace LegoCollections.LegoLists.Commands
             return Unit.Value;
         }
     }
-}
