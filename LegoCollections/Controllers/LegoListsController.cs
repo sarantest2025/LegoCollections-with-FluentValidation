@@ -24,9 +24,7 @@ public class LegoListsController : ControllerBase
     public async Task<IActionResult> Create([FromBody] CreateLegoListCommand command)
     {
         var result = await _mediator.Send(command);
-        if (result <= 0) return BadRequest("Failed to create Lego List");
-        return Ok("Lego List Created Successfully");         
-        //return CreatedAtAction(nameof(GetAll), new { id = result }, null);
+        return CreatedAtAction(nameof(GetAll), new { result }, null);
     }
 
     [HttpPut("{id}")]

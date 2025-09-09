@@ -7,8 +7,7 @@ public class LegoFigure
     public string Condition { get; set; } = string.Empty;
 
     public int LegoListId { get; set; }
-    public LegoList ListId { get; set; } = null!;
-
+    public LegoList LegoList { get; set; } = null!;
 }
     
 

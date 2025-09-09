@@ -5,3 +5,15 @@ csharp_style_unused_value_expression_statement_preference = unused_local_variabl
 
 # CS8602: Dereference of a possibly null reference.
 dotnet_diagnostic.CS8602.severity = none
+
+# IDE0040: Add accessibility modifiers
+dotnet_style_require_accessibility_modifiers = never
+
+# IDE0320: Make anonymous function static
+csharp_prefer_static_anonymous_function = true
+
+# IDE0320: Make anonymous function static
+csharp_prefer_static_anonymous_function = true
+
+# IDE0320: Make anonymous function static
+csharp_prefer_static_anonymous_function = true

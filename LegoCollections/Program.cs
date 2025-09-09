@@ -1,33 +1,44 @@
 using Microsoft.EntityFrameworkCore;
 using MediatR;
 using LegoCollections.Data;
-using LegoCollections.Models;
-using LegoCollections.LegoFigures.Commands;
 using FluentValidation;
-
+using Microsoft.AspNetCore.Identity;
+using LegoCollections.Models;
+using LegoCollections.Commands.Minifigure;
+using LegoCollections.Behaviors;
 
 var builder = WebApplication.CreateBuilder(args);
 
-    builder.Services.AddControllers();
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
 
-    builder.Services.AddDbContext<LegoDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+        builder.Services.AddDbContext<LegoDbContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-    builder.Services.AddMediatR(typeof(Program).Assembly);
-    builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
-    //builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LegoCollections.Api.Application.Behaviors.ValidationBehaviour<,>));
+        builder.Services.AddDataProtection();
 
-    var app = builder.Build();
-
-    if (app.Environment.IsDevelopment())
-    {
-        app.UseSwagger();
-        app.UseSwaggerUI();
-    }
-    app.UseHttpsRedirection();
-    app.UseAuthorization();
-    app.MapControllers();
-    app.Run();
+        builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+        {
+            options.Password.RequireDigit = false;
+            options.Password.RequiredLength = 6;
+        })
+            .AddEntityFrameworkStores<LegoDbContext>()
+            .AddDefaultTokenProviders();
+          builder.Services.AddMediatR(typeof(CreateMinifigureCommand).Assembly);
+          builder.Services.AddValidatorsFromAssemblyContaining<CreateMinifigureCommandValidator>();
+          builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+          builder.Services.AddControllers();
+          
+        var app = builder.Build();
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+        app.UseAuthentication();
+        app.UseHttpsRedirection();
+        app.UseAuthorization();
+        app.MapControllers();
+        app.Run();
 

@@ -1,7 +1,7 @@
 using MediatR;
+using LegoCollections.Commands.LegoFigures;
 using Microsoft.AspNetCore.Mvc;
 using LegoCollections.Queries.LegoFigures;
-using LegoCollections.Commands.LegoFigures;
 
 namespace LegoCollections.LegoCollections.Controllers
 {
